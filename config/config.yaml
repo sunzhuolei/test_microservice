@@ -1,0 +1,16 @@
+server:
+  http:
+    addr: 0.0.0.0:8081
+    timeout: 1s
+  grpc:
+    addr: 0.0.0.0:50057
+    timeout: 1s
+data:
+  database:
+    driver: mysql
+    source: root:123456@(127.0.0.1:3306)/closer_user
+  redis:
+    addr: 127.0.0.1:6379
+    db: 12
+    read_timeout: 0.2s
+    write_timeout: 0.2s

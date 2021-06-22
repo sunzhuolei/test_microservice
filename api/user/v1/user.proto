@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option go_package ="./;api_user_v1";
+
+/*
+* 请求体
+*/
+message UserRequest {
+    string UserId = 1;
+}
+
+/*
+* 请求响应
+*/
+message UserResponse {
+    string UserId = 1;
+    string Avatar = 2;
+    string NickName = 3;
+    int64 Sex = 4;
+    string Birthday = 5;
+    int64 Platform = 6;
+    string OpenId = 7;
+    string UnionId = 8;
+    string DeviceId = 9;
+    string Client = 10;
+    string AppVersion = 11;
+    string LastOnlineTime = 12;
+    string LastOfflineTime = 13;
+    string CreateTime = 14;
+    int64 IsDelete = 15;
+    int64 ForceUpdate = 16;
+    string PushToken = 17;
+    string Phone = 18;
+    bool IsNunar = 19;
+}
+
+/*
+* 用户服务
+*/
+service UserService {
+    rpc GetUserInfo(UserRequest)returns(UserResponse) {}
+}
