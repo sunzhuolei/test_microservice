@@ -13,11 +13,13 @@ import (
 type Config struct {
 	Server Server
 	Data Data
+	Service Service
 }
 
 type Server struct {
 	Http Http
 	Grpc Grpc
+	Consul Consul
 }
 
 type Data struct {
@@ -35,6 +37,9 @@ type Grpc struct {
 	Timeout time.Duration `yaml:"timeout"`
 }
 
+type Consul struct {
+	Addr string `yaml:"addr"`
+}
 
 type DataBase struct {
 	Driver string `yaml:"driver"`
@@ -47,6 +52,24 @@ type Redis struct {
 	DB int `yaml:"db"`
 	ReadTimeout time.Duration `yaml:"read_timeout"`
 	WriteTimeout time.Duration `yaml:"write_timeout"`
+}
+
+type Service struct {
+	Register Register
+	Check Check
+}
+
+type Register struct {
+	Id string `yaml:"id"`
+	Name string `yaml:"name"`
+	Tag []string `yaml:"tag"`
+}
+
+type Check struct {
+	Interval string `yaml:"interval"`
+	Timeout string `yaml:"timeout"`
+	Notes string `yaml:"notes"`
+	DeregisterCriticalServiceAfter string `yaml:"deregistercriticalserviceafter"`
 }
 
 var (
